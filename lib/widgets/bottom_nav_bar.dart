@@ -1,10 +1,10 @@
+import 'package:fit_memoir/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:meditation_app/constants.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -19,15 +19,18 @@ class BottomNavBar extends StatelessWidget {
           BottomNavItem(
             title: "Today",
             svgScr: "assets/icons/calendar.svg",
+            press: () {},
           ),
           BottomNavItem(
             title: "All Exercises",
             svgScr: "assets/icons/gym.svg",
             isActive: true,
+            press: () {},
           ),
           BottomNavItem(
             title: "Settings",
             svgScr: "assets/icons/Settings.svg",
+            press: () {},
           ),
         ],
       ),
@@ -41,17 +44,19 @@ class BottomNavItem extends StatelessWidget {
   final Function press;
   final bool isActive;
   const BottomNavItem({
-    Key key,
-    this.svgScr,
-    this.title,
-    this.press,
+    Key? key,
+    required this.svgScr,
+    required this.title,
+    required this.press,
     this.isActive = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: press,
+      onTap: () {
+        press();
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[

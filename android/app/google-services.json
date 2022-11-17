@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "470368958053",
+    "project_id": "fit-memoirrrrr",
+    "storage_bucket": "fit-memoirrrrr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470368958053:android:cedfcaf7af1f2540a2788c",
+        "android_client_info": {
+          "package_name": "com.example.meditation_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470368958053-v3m210o7ir2caj4k194840n646nmnslt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeYJbz7KcqYwdb2dzTEcLWTPeI73bosjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470368958053-v3m210o7ir2caj4k194840n646nmnslt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

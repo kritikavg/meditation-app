@@ -1,8 +1,7 @@
+import 'package:fit_memoir/constants.dart';
+import 'package:fit_memoir/widgets/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:meditation_app/constants.dart';
-import 'package:meditation_app/widgets/bottom_nav_bar.dart';
-import 'package:meditation_app/widgets/search_bar.dart';
 
 class DetailsScreen extends StatelessWidget {
   @override
@@ -36,8 +35,8 @@ class DetailsScreen extends StatelessWidget {
                       "Meditation",
                       style: Theme.of(context)
                           .textTheme
-                          .titleMedium
-                          .copyWith(fontWeight: FontWeight.w900),
+                          .displayMedium
+                          ?.copyWith(fontWeight: FontWeight.w900),
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -51,10 +50,7 @@ class DetailsScreen extends StatelessWidget {
                         "Live happier and healthier by learning the fundamentals of meditation and mindfulness",
                       ),
                     ),
-                    SizedBox(
-                      width: size.width * .5, // it just take the 50% width
-                      child: SearchBar(),
-                    ),
+                    SizedBox(height: 10),
                     Wrap(
                       spacing: 20,
                       runSpacing: 20,
@@ -86,13 +82,13 @@ class DetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 30),
                     Text(
                       "Meditation",
                       style: Theme.of(context)
                           .textTheme
-                          .titleMedium
-                          .copyWith(fontWeight: FontWeight.bold),
+                          .displayMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 20),
@@ -152,10 +148,10 @@ class SeassionCard extends StatelessWidget {
   final bool isDone;
   final Function press;
   const SeassionCard({
-    Key key,
-    this.seassionNum,
+    Key? key,
+    required this.seassionNum,
     this.isDone = false,
-    this.press,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -182,7 +178,9 @@ class SeassionCard extends StatelessWidget {
           child: Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: press,
+              onTap: () {
+                press();
+              },
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
