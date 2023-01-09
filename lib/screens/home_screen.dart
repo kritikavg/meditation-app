@@ -109,7 +109,7 @@ class HomePage extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Total Steps",
+                      "Goal Steps",
                       style: TextStyle(
                         fontSize: 21,
                         fontWeight: FontWeight.w900,
@@ -120,7 +120,7 @@ class HomePage extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "5000",
+                      "3000",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w900,

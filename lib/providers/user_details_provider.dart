@@ -8,6 +8,7 @@ class UserDetailsProvider extends ChangeNotifier {
   UserCredential? userDetails;
   UserRepository userRepo = UserRepository();
   bool isLoading = false;
+  String _password = "";
 
   Future<bool> loginUser({
     required String email,
@@ -15,6 +16,7 @@ class UserDetailsProvider extends ChangeNotifier {
   }) async {
     try {
       isLoading = true;
+      _password = password;
       notifyListeners();
       userDetails = await userRepo
           .loginUser(
@@ -34,6 +36,21 @@ class UserDetailsProvider extends ChangeNotifier {
       log("error: [pvd loginUser] $e");
       return false;
     }
+  }
+
+  Future<void> changeUserName(String name) async {
+    userDetails!.user!.updateDisplayName(name).then(
+      (value) async {
+        userDetails = await userRepo.loginUser(
+          email: userDetails!.user!.email.toString(),
+          password: _password,
+        );
+        log("changeUserName ${userDetails.toString()}");
+        notifyListeners();
+        return value;
+      },
+    );
+    notifyListeners();
   }
 
   Future<bool> registerUser({

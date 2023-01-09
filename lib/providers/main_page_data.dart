@@ -30,7 +30,7 @@ class MainPageData extends ChangeNotifier {
       image: "assets/icons/gym.svg",
     ),
     BottomNavItemData(
-      title: "Settings",
+      title: "Account",
       image: "assets/icons/Settings.svg",
     ),
   ];
