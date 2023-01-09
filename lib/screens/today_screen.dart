@@ -81,7 +81,7 @@ class TodayScreen extends ConsumerWidget {
                 height: 100,
               ),
               Text(
-                "Today Exercise".toUpperCase(),
+                "Today's Exercise".toUpperCase(),
                 style: TextStyle(
                   fontFamily: "Cairo",
                   fontSize: 22,
