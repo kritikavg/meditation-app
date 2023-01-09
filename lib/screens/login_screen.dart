@@ -17,8 +17,8 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  var emailCtrl = TextEditingController(text: "cc@gmail.com");
-  var pwdCtrl = TextEditingController(text: "12345678");
+  var emailCtrl = TextEditingController();
+  var pwdCtrl = TextEditingController();
 
   @override
   void dispose() {
