@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -47,29 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCShjul8mD862iSeaLo3K5_EdWwl5MlTdc',
-    appId: '1:470368958053:web:e23d53f91f200b29a2788c',
-    messagingSenderId: '470368958053',
-    projectId: 'fit-memoirrrrr',
-    authDomain: 'fit-memoirrrrr.firebaseapp.com',
-    storageBucket: 'fit-memoirrrrr.appspot.com',
+    apiKey: 'AIzaSyAre3KlJErTvLdf0kmJLNKtmC6vcuXo0bE',
+    appId: '1:362829069186:web:f0da544804d8cdcf376d9b',
+    messagingSenderId: '362829069186',
+    projectId: 'fit-memoir',
+    authDomain: 'fit-memoir.firebaseapp.com',
+    storageBucket: 'fit-memoir.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBeYJbz7KcqYwdb2dzTEcLWTPeI73bosjs',
-    appId: '1:470368958053:android:cedfcaf7af1f2540a2788c',
-    messagingSenderId: '470368958053',
-    projectId: 'fit-memoirrrrr',
-    storageBucket: 'fit-memoirrrrr.appspot.com',
+    apiKey: 'AIzaSyAMzjzafqPYd3WN1G6lrJnS3k-7h5TEzgI',
+    appId: '1:362829069186:android:defd5d2a3495b8fd376d9b',
+    messagingSenderId: '362829069186',
+    projectId: 'fit-memoir',
+    storageBucket: 'fit-memoir.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAJshO2dGWmg3Kr-0LWVpVYLlXzWmgd2mc',
-    appId: '1:470368958053:ios:ea871da5f7ef0a77a2788c',
-    messagingSenderId: '470368958053',
-    projectId: 'fit-memoirrrrr',
-    storageBucket: 'fit-memoirrrrr.appspot.com',
-    iosClientId: '470368958053-8qtc3mgsoaartljnjb4a16biqv19nl7i.apps.googleusercontent.com',
-    iosBundleId: 'com.example.meditationApp',
+    apiKey: 'AIzaSyDeF7YZLGRfnT4iUEuYelnf7CTdyPe-6wo',
+    appId: '1:362829069186:ios:4d9f499b19e3f6da376d9b',
+    messagingSenderId: '362829069186',
+    projectId: 'fit-memoir',
+    storageBucket: 'fit-memoir.appspot.com',
+    iosClientId: '362829069186-nj4cmsdk9jdrh61v342g2qdqd167hcp8.apps.googleusercontent.com',
+    iosBundleId: 'com.example.fitMemoir',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDeF7YZLGRfnT4iUEuYelnf7CTdyPe-6wo',
+    appId: '1:362829069186:ios:4d9f499b19e3f6da376d9b',
+    messagingSenderId: '362829069186',
+    projectId: 'fit-memoir',
+    storageBucket: 'fit-memoir.appspot.com',
+    iosClientId: '362829069186-nj4cmsdk9jdrh61v342g2qdqd167hcp8.apps.googleusercontent.com',
+    iosBundleId: 'com.example.fitMemoir',
   );
 }

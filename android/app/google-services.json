@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "470368958053",
-    "project_id": "fit-memoirrrrr",
-    "storage_bucket": "fit-memoirrrrr.appspot.com"
+    "project_number": "362829069186",
+    "project_id": "fit-memoir",
+    "storage_bucket": "fit-memoir.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:470368958053:android:cedfcaf7af1f2540a2788c",
+        "mobilesdk_app_id": "1:362829069186:android:defd5d2a3495b8fd376d9b",
         "android_client_info": {
-          "package_name": "com.example.meditation_app"
+          "package_name": "com.example.fit_memoir"
         }
       },
       "oauth_client": [
         {
-          "client_id": "470368958053-v3m210o7ir2caj4k194840n646nmnslt.apps.googleusercontent.com",
+          "client_id": "362829069186-tsv3lrq93l6rkfpeqo3shartvig02q4j.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBeYJbz7KcqYwdb2dzTEcLWTPeI73bosjs"
+          "current_key": "AIzaSyAMzjzafqPYd3WN1G6lrJnS3k-7h5TEzgI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "470368958053-v3m210o7ir2caj4k194840n646nmnslt.apps.googleusercontent.com",
+              "client_id": "362829069186-tsv3lrq93l6rkfpeqo3shartvig02q4j.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "362829069186-nj4cmsdk9jdrh61v342g2qdqd167hcp8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.fitMemoir"
+              }
             }
           ]
         }

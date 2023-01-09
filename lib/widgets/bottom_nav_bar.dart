@@ -1,37 +1,34 @@
 import 'package:fit_memoir/constants.dart';
+import 'package:fit_memoir/providers/global_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({
-    Key? key,
-  }) : super(key: key);
+class BottomNavBar extends ConsumerWidget {
+  const BottomNavBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var bottomNavData = ref.read(bottomNavItemProvider).bottomItemData;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+      padding: EdgeInsets.symmetric(
+        horizontal: 40,
+        vertical: 10,
+      ),
       height: 80,
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          BottomNavItem(
-            title: "Today",
-            svgScr: "assets/icons/calendar.svg",
-            press: () {},
-          ),
-          BottomNavItem(
-            title: "All Exercises",
-            svgScr: "assets/icons/gym.svg",
-            isActive: true,
-            press: () {},
-          ),
-          BottomNavItem(
-            title: "Settings",
-            svgScr: "assets/icons/Settings.svg",
-            press: () {},
-          ),
+          for (int index = 0; index < bottomNavData.length; index++)
+            BottomNavItem(
+              title: bottomNavData[index].title,
+              svgScr: bottomNavData[index].image,
+              isActive: ref.watch(bottomNavItemProvider).currentIndex == index,
+              press: () {
+                ref.read(bottomNavItemProvider).changeCurrentPage(index);
+              },
+            ),
         ],
       ),
     );
@@ -53,7 +50,7 @@ class BottomNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         press();
       },

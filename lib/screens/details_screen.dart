@@ -1,24 +1,42 @@
+import 'dart:developer';
+
 import 'package:fit_memoir/constants.dart';
-import 'package:fit_memoir/widgets/bottom_nav_bar.dart';
+import 'package:fit_memoir/models/excersise_model.dart';
+import 'package:fit_memoir/screens/youtube_viewer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class DetailsScreen extends StatelessWidget {
+  const DetailsScreen({
+    super.key,
+    required this.pageData,
+    required this.image,
+  });
+
+  final ExcersiseModel pageData;
+  final String image;
+
   @override
   Widget build(BuildContext context) {
+    log("here data ${pageData.toJson()}");
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      bottomNavigationBar: BottomNavBar(),
       body: Stack(
         children: <Widget>[
-          Container(
-            height: size.height * .45,
-            decoration: BoxDecoration(
-              color: kBlueLightColor,
-              image: DecorationImage(
-                image: AssetImage("assets/images/meditation_bg.png"),
-                fit: BoxFit.fitWidth,
-              ),
+          ColoredBox(
+            color: kBlueLightColor,
+            child: SizedBox(
+              height: size.height * .45,
+              width: double.infinity,
+            ),
+          ),
+          Positioned(
+            right: 0,
+            top: size.height * 0.1,
+            child: SvgPicture.asset(
+              image,
+              height: size.height * 0.15,
+              width: size.width * 0.3,
             ),
           ),
           SafeArea(
@@ -32,7 +50,7 @@ class DetailsScreen extends StatelessWidget {
                       height: size.height * 0.05,
                     ),
                     Text(
-                      "Meditation",
+                      pageData.title,
                       style: Theme.of(context)
                           .textTheme
                           .displayMedium
@@ -40,97 +58,113 @@ class DetailsScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      "3-10 MIN Course",
+                      pageData.duration,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 10),
                     SizedBox(
                       width: size.width * .6, // it just take 60% of total width
                       child: Text(
-                        "Live happier and healthier by learning the fundamentals of meditation and mindfulness",
+                        pageData.description,
                       ),
                     ),
                     SizedBox(height: 10),
-                    Wrap(
-                      spacing: 20,
-                      runSpacing: 20,
-                      children: <Widget>[
-                        SeassionCard(
-                          seassionNum: 1,
-                          isDone: true,
-                          press: () {},
+                    SizedBox(
+                      height: size.height * 0.24,
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 3,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
                         ),
-                        SeassionCard(
-                          seassionNum: 2,
-                          press: () {},
-                        ),
-                        SeassionCard(
-                          seassionNum: 3,
-                          press: () {},
-                        ),
-                        SeassionCard(
-                          seassionNum: 4,
-                          press: () {},
-                        ),
-                        SeassionCard(
-                          seassionNum: 5,
-                          press: () {},
-                        ),
-                        SeassionCard(
-                          seassionNum: 6,
-                          press: () {},
-                        ),
-                      ],
+                        itemCount: pageData.sessions.length,
+                        itemBuilder: (context, index) {
+                          return SeassionCard(
+                            seassionNum: index + 1,
+                            // isDone: true,
+                            press: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => YoutubeViewerScreen(
+                                    videoLink: pageData.sessions[index],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
                     ),
                     SizedBox(height: 30),
                     Text(
-                      "Meditation",
+                      pageData.title,
                       style: Theme.of(context)
                           .textTheme
-                          .displayMedium
+                          .headline4
                           ?.copyWith(fontWeight: FontWeight.bold),
                     ),
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 20),
-                      padding: EdgeInsets.all(10),
-                      height: 90,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(13),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 17),
-                            blurRadius: 23,
-                            spreadRadius: -13,
-                            color: kShadowColor,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            "assets/icons/Meditation_women_small.svg",
-                          ),
-                          SizedBox(width: 20),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  "Basic 2",
-                                  style: Theme.of(context).textTheme.subtitle1,
+                    Column(
+                      children: [
+                        for (int i = 0; i < 2; i++)
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => YoutubeViewerScreen(
+                                      videoLink: pageData.sessions[i]),
                                 ),
-                                Text("Start your deepen you practice")
-                              ],
+                              );
+                            },
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 20),
+                              padding: EdgeInsets.all(10),
+                              height: 90,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(13),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    offset: Offset(0, 17),
+                                    blurRadius: 23,
+                                    spreadRadius: -13,
+                                    color: kShadowColor,
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                children: <Widget>[
+                                  SvgPicture.asset(
+                                    image,
+                                  ),
+                                  SizedBox(width: 20),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                          "${i + 1}. Practice ${pageData.title}",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .subtitle1,
+                                        ),
+                                        const Text(
+                                          "Start deepen your practice",
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.all(10),
-                            child: SvgPicture.asset("assets/icons/Lock.svg"),
-                          ),
-                        ],
-                      ),
+                      ],
                     )
                   ],
                 ),
